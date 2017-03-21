@@ -12,8 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan({"com.myles.demo"})
-@EnableJpaRepositories({"com.myles.demo"})
-@EntityScan({"com.myles.demo"})
+//@EnableJpaRepositories({"com.myles.demo"})
+//@EntityScan({"com.myles.demo"})
 public class SpringBootApplication extends SpringBootServletInitializer{
 
 	@Override
