@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-//@ComponentScan({"com.myles.demo"})
+@ComponentScan({"com.myles.demo"})
 //@EnableJpaRepositories({"com.myles.demo"})
 //@EntityScan({"com.myles.demo"})
 public class SpringBootApplication extends SpringBootServletInitializer{
