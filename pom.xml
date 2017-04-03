@@ -10,6 +10,6 @@
   	<module>universe-service</module>
   	<module>universe-ui</module>
   	<module>universe-utils</module>
-<!--  	<module>universe-web</module>  -->
+  	<module>universe-web</module> 
   </modules>
 </project>
