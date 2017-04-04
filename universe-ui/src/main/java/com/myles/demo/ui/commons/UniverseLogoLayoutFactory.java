@@ -13,19 +13,19 @@ public class UniverseLogoLayoutFactory implements UIComponentBuilder {
 
         private Embedded logo;
 
-	public LogoLayout init(){
-	    this.logo = new Embedded();
-	    this.logo.setSource(new ThemeResource("../../images/orpheus.jpg"));
-	    this.logo.setWidth("674px");
-	    this.logo.setHeight("346px");
-	    return this;
-	}
+		public LogoLayout init(){
+			this.logo = new Embedded();
+			this.logo.setSource(new ThemeResource("../../images/orpheus.jpg"));
+			this.logo.setWidth("674px");
+			this.logo.setHeight("346px");
+			return this;
+		}
 
-        public LogoLayout layout(){
-           this.addComponent(logo);
-	   this.setComponentAlignment(logo, Alignment.MIDDLE_CENTER);
-	   return this;
-	}
+		public LogoLayout layout(){
+			this.addComponent(logo);
+			this.setComponentAlignment(logo, Alignment.MIDDLE_CENTER);
+			return this;
+		}
 
     }
 
