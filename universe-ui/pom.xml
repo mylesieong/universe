@@ -27,6 +27,12 @@
 			<artifactId>universe-utils</artifactId> 
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>  
+		<!-- Universe model -->
+		<dependency> 
+			<groupId>com.myles.demo</groupId>
+			<artifactId>universe-model</artifactId> 
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>  
 
 	</dependencies>
 

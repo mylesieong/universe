@@ -11,10 +11,15 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.Component;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @SpringView(name=StudentLayoutFactory.NAME, ui=UniverseMainUI.class)
 public class StudentLayoutFactory extends VerticalLayout implements View{
 
     public static final String NAME = "addstudent";
+
+    @Autowired
+    private AddStudentMainLayoutFactory mainLayoutFactory;
 
     private TabSheet tabSheet;
 
@@ -24,7 +29,7 @@ public class StudentLayoutFactory extends VerticalLayout implements View{
 	this.tabSheet = new TabSheet();
 	this.tabSheet.setWidth("100%");
 
-	Component addStudentMainTab = new Label("First tab content...");
+	Component addStudentMainTab = mainLayoutFactory.createComponent();
 	Component showStudentsTab = new Label("Show students tab...");
 
 	this.tabSheet.addTab(addStudentMainTab, StudentsStringUtils.MAIN_MENU.getString());
