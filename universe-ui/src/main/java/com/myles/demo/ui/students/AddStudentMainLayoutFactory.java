@@ -7,6 +7,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.themes.ValoTheme;
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 
@@ -38,11 +39,19 @@ public class AddStudentMainLayoutFactory{
             lastName = new TextField(StudentsStringUtils.LAST_NAME.getString());
             age = new TextField(StudentsStringUtils.AGE.getString());
             gender = new ComboBox(StudentsStringUtils.GENDER.getString());
+
             saveButton = new Button(StudentsStringUtils.SAVE_BUTTON.getString());
             clearButton = new Button(StudentsStringUtils.CLEAR_BUTTON.getString());
 
+            saveButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
+            clearButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
+
             gender.addItem(Gender.GENDER_MALE.getString());
             gender.addItem(Gender.GENDER_FEMALE.getString());
+
+            firstName.setNullRepresentation("");
+            lastName.setNullRepresentation("");
+            age.setNullRepresentation("");
 
             return this;
         }
