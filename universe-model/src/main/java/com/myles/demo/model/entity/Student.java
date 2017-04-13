@@ -1,11 +1,25 @@
 package com.myles.demo.model.entity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class Student {
 
     private Integer id;
+
+    @NotNull(message="You have to specify first name")
     private String firstName;
+
+    @NotNull(message="You have to specify last name")
     private String lastName;
+
+    @NotNull(message="You have to specify age")
+    @Min(value=0, message="Minimum value is 0")
+    @Max(value=100, message="Maximum value is 100")
     private Integer age;
+
+    @NotNull(message="Gender must be set.")
     private String gender;
 
     public Student(){}
