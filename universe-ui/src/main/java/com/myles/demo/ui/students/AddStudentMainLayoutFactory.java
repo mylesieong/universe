@@ -10,6 +10,8 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
@@ -18,6 +20,7 @@ import com.vaadin.data.fieldgroup.PropertyId;
 import com.myles.demo.model.entity.Student;
 import com.myles.demo.utils.Gender;
 import com.myles.demo.utils.StudentsStringUtils;
+import com.myles.demo.utils.NotificationMessage;
 
 @org.springframework.stereotype.Component
 public class AddStudentMainLayoutFactory{
@@ -104,7 +107,9 @@ public class AddStudentMainLayoutFactory{
             try{
                 fieldGroup.commit();
             }catch (CommitException e){
-                e.printStackTrace();
+                Notification.show(NotificationMessage.STUDENT_SAVE_VALIDATION_ERROR_TITLE.getString(), NotificationMessage.STUDENT_SAVE_VALIDATION_ERROR_RESTRICTION.getString(), Type.ERROR_MESSAGE);
+                return;
+                //e.printStackTrace();
             }
             System.out.println(student);  //debug
         }
