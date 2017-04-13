@@ -111,7 +111,8 @@ public class AddStudentMainLayoutFactory{
                 return;
                 //e.printStackTrace();
             }
-            System.out.println(student);  //debug
+            //System.out.println(student);  
+            clearField();
         }
 
         private void clearField(){
