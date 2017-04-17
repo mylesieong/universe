@@ -6,4 +6,22 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>universe-service</artifactId>
+
+  <dependencies>
+    <!-- Universe Model -->
+    <dependency> 
+        <groupId>com.myles.demo</groupId>
+        <artifactId>universe-model</artifactId> 
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>  
+
+    <!-- Universe Repository -->
+    <dependency> 
+        <groupId>com.myles.demo</groupId>
+        <artifactId>universe-repository</artifactId> 
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>  
+
+  </dependencies>
+
 </project>
