@@ -117,6 +117,7 @@ public class AddStudentMainLayoutFactory{
             //System.out.println(student);  
             addStudentService.saveStudent(student);
             clearField();
+            Notification.show(NotificationMessage.STUDENT_SAVE_SUCCESS_TITLE.getString(), NotificationMessage.STUDENT_SAVE_SUCCESS_DESCRIPTION.getString(), Type.ERROR_MESSAGE);
         }
 
         private void clearField(){
