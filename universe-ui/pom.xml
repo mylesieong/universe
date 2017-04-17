@@ -33,6 +33,12 @@
 			<artifactId>universe-model</artifactId> 
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>  
+		<!-- Universe Service -->
+		<dependency> 
+			<groupId>com.myles.demo</groupId>
+			<artifactId>universe-service</artifactId> 
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>  
 
 	</dependencies>
 

@@ -17,10 +17,13 @@ import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
 import com.vaadin.data.fieldgroup.PropertyId;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.myles.demo.model.entity.Student;
 import com.myles.demo.utils.Gender;
 import com.myles.demo.utils.StudentsStringUtils;
 import com.myles.demo.utils.NotificationMessage;
+import com.myles.demo.service.addstudent.AddStudentService;
 
 @org.springframework.stereotype.Component
 public class AddStudentMainLayoutFactory{
@@ -112,6 +115,7 @@ public class AddStudentMainLayoutFactory{
                 //e.printStackTrace();
             }
             //System.out.println(student);  
+            addStudentService.saveStudent(student);
             clearField();
         }
 
@@ -122,6 +126,9 @@ public class AddStudentMainLayoutFactory{
             age.setValue(null);
         }
     }
+
+    @Autowired
+    private AddStudentService addStudentService;
 
     public Component createComponent(){
         return new AddStudentMainLayout().init().bind().layout();
