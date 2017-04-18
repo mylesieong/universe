@@ -24,9 +24,10 @@ import com.myles.demo.utils.Gender;
 import com.myles.demo.utils.StudentsStringUtils;
 import com.myles.demo.utils.NotificationMessage;
 import com.myles.demo.service.addstudent.AddStudentService;
+import com.myles.demo.ui.commons.UIComponentBuilder;
 
 @org.springframework.stereotype.Component
-public class AddStudentMainLayoutFactory{
+public class AddStudentMainLayoutFactory implements UIComponentBuilder{
 
     private class AddStudentMainLayout extends VerticalLayout implements Button.ClickListener{
         /* UI component */
