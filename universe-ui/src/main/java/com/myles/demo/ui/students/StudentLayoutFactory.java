@@ -1,8 +1,5 @@
 package com.myles.demo.ui.students;
 
-import com.myles.demo.ui.commons.UniverseMainUI;
-import com.myles.demo.utils.StudentsStringUtils;
-
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -13,6 +10,9 @@ import com.vaadin.ui.Component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.myles.demo.ui.commons.UniverseMainUI;
+import com.myles.demo.utils.StudentsStringUtils;
+
 @SpringView(name=StudentLayoutFactory.NAME, ui=UniverseMainUI.class)
 public class StudentLayoutFactory extends VerticalLayout implements View{
 
@@ -21,18 +21,21 @@ public class StudentLayoutFactory extends VerticalLayout implements View{
     @Autowired
     private AddStudentMainLayoutFactory mainLayoutFactory;
 
+    @Autowired
+    private ShowAllStudentsLayoutFactory showStudentsLayoutFactory;
+
     private TabSheet tabSheet;
 
     private void addLayout(){
         setMargin(true);
 
-	this.tabSheet = new TabSheet();
-	this.tabSheet.setWidth("100%");
+        this.tabSheet = new TabSheet();
+        this.tabSheet.setWidth("100%");
 
-	Component addStudentMainTab = mainLayoutFactory.createComponent();
-	Component showStudentsTab = new Label("Show students tab...");
+        Component addStudentMainTab = mainLayoutFactory.createComponent();
+        Component showStudentsTab = showStudentsLayoutFactory.createComponent();
 
-	this.tabSheet.addTab(addStudentMainTab, StudentsStringUtils.MAIN_MENU.getString());
+        this.tabSheet.addTab(addStudentMainTab, StudentsStringUtils.MAIN_MENU.getString());
         this.tabSheet.addTab(showStudentsTab, StudentsStringUtils.SHOW_ALL_STUDENTS.getString());
         this.addComponent(this.tabSheet);
 

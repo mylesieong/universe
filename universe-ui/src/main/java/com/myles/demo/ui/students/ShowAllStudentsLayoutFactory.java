@@ -7,8 +7,11 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.data.util.BeanItemContainer;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.myles.demo.model.entity.Student;
 import com.myles.demo.ui.commons.UIComponentBuilder;
+import com.myles.demo.service.showallstudents.ShowAllStudentsService;
 
 @org.springframework.stereotype.Component
 public class ShowAllStudentsLayoutFactory implements UIComponentBuilder {
@@ -27,8 +30,8 @@ public class ShowAllStudentsLayoutFactory implements UIComponentBuilder {
             container = new BeanItemContainer<Student>(Student.class, students);
 
             studentsTable = new Grid(container);
-            studentsTable.setColomnuOrder("firstName", "lastName", "age", "gender");
-            studentsTable.removeColomn("id");
+            studentsTable.setColumnOrder("firstName", "lastName", "age", "gender");
+            studentsTable.removeColumn("id");
             studentsTable.setImmediate(true);
 
             return this;
@@ -36,6 +39,7 @@ public class ShowAllStudentsLayoutFactory implements UIComponentBuilder {
         }
 
         public ShowAllStudentsLayout load(){
+            students = showAllStudentsService.getAllStudents();
             return this;
         }
 
@@ -46,8 +50,11 @@ public class ShowAllStudentsLayoutFactory implements UIComponentBuilder {
 
     }
 
+    @Autowired
+    private ShowAllStudentsService showAllStudentsService;
+
     public Component createComponent(){
-        return new ShowAllStudentsLayout().init().load().layout();
+        return new ShowAllStudentsLayout().load().init().layout();
     }
 
 }
