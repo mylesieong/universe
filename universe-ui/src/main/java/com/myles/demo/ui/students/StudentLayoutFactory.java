@@ -14,7 +14,7 @@ import com.myles.demo.ui.commons.UniverseMainUI;
 import com.myles.demo.utils.StudentsStringUtils;
 
 @SpringView(name=StudentLayoutFactory.NAME, ui=UniverseMainUI.class)
-public class StudentLayoutFactory extends VerticalLayout implements View{
+public class StudentLayoutFactory extends VerticalLayout implements View, StudentSavedListener{
 
     public static final String NAME = "addstudent";
 
@@ -32,7 +32,7 @@ public class StudentLayoutFactory extends VerticalLayout implements View{
         this.tabSheet = new TabSheet();
         this.tabSheet.setWidth("100%");
 
-        Component addStudentMainTab = mainLayoutFactory.createComponent();
+        Component addStudentMainTab = mainLayoutFactory.createComponent(this);
         Component showStudentsTab = showStudentsLayoutFactory.createComponent();
 
         this.tabSheet.addTab(addStudentMainTab, StudentsStringUtils.MAIN_MENU.getString());
@@ -42,9 +42,14 @@ public class StudentLayoutFactory extends VerticalLayout implements View{
     }
 
     @Override
+    public void studentSaved(){
+        this.showStudentsLayoutFactory.refreshTable();
+    }
+
+    @Override
     public void enter(ViewChangeEvent event){
          removeAllComponents();
-	 addLayout();
+         addLayout();
     }
 
 }

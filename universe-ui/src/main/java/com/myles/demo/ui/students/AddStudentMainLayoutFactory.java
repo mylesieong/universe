@@ -27,7 +27,7 @@ import com.myles.demo.service.addstudent.AddStudentService;
 import com.myles.demo.ui.commons.UIComponentBuilder;
 
 @org.springframework.stereotype.Component
-public class AddStudentMainLayoutFactory implements UIComponentBuilder{
+public class AddStudentMainLayoutFactory {
 
     private class AddStudentMainLayout extends VerticalLayout implements Button.ClickListener{
         /* UI component */
@@ -42,6 +42,13 @@ public class AddStudentMainLayoutFactory implements UIComponentBuilder{
         /* Model related field */
         private BeanFieldGroup<Student> fieldGroup;
         private Student student;
+
+        @Autowired
+        private StudentSavedListener studentSavedListener;
+
+        public AddStudentMainLayout(StudentSavedListener listener){
+            this.studentSavedListener = listener;
+        }
 
         public AddStudentMainLayout init(){
 
@@ -117,6 +124,9 @@ public class AddStudentMainLayoutFactory implements UIComponentBuilder{
             }
             //System.out.println(student);  
             addStudentService.saveStudent(student);
+
+            this.studentSavedListener.studentSaved();
+
             clearField();
             Notification.show(NotificationMessage.STUDENT_SAVE_SUCCESS_TITLE.getString(), NotificationMessage.STUDENT_SAVE_SUCCESS_DESCRIPTION.getString(), Type.ERROR_MESSAGE);
         }
@@ -132,8 +142,8 @@ public class AddStudentMainLayoutFactory implements UIComponentBuilder{
     @Autowired
     private AddStudentService addStudentService;
 
-    public Component createComponent(){
-        return new AddStudentMainLayout().init().bind().layout();
+    public Component createComponent(StudentSavedListener listener){
+        return new AddStudentMainLayout(listener).init().bind().layout();
     }
 
 }

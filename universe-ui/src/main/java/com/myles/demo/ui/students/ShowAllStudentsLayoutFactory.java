@@ -50,6 +50,12 @@ public class ShowAllStudentsLayoutFactory implements UIComponentBuilder {
 
     }
 
+    public void refreshTable(){
+        students = showAllStudentsService.getAllStudents();
+        container.removeAllItems();
+        container.addAll(students);
+    }
+
     @Autowired
     private ShowAllStudentsService showAllStudentsService;
 
